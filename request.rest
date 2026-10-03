@@ -1,0 +1,94 @@
+//get all ROOMS
+GET http://localhost:4040/api/rooms
+
+//add new ROOM
+POST http://localhost:4040/api/rooms
+
+{
+   "name":"test room update",
+  "price":600,
+  "desc":"newwly added",
+  "roomNumbers":[{
+    "number":10,
+    "availableDates":["2024-01-24","2024-02-20"]
+  }]
+}
+
+//Get Single ROOM by ID
+GET http://localhost:4040/api/rooms/6772b0c3f588c8a4ed35e845
+
+//update single room
+PUT http://localhost:4040/api/rooms/6772b0c3f588c8a4ed35e845
+
+
+-----------------------------------------------------------------------------------------
+                                    BOOKINGS
+
+//get all BOOKINGS
+GET http://localhost:4040/api/bookings
+
+{
+    roomId:"6772b1023e1736888eeb1cb2",
+    name:"Yasin",
+    email:"yasin@gmail.com",
+    checkinDate:"2024-02-25",
+    checkoutDate:"2024-02-29",
+    confirmed:true
+}
+-----------------------------------------------------------------------------------
+//                                      USERS post
+//get all USERS
+GET http://localhost:4040/api/users
+
+//add new USER
+POST http://localhost:4040/api/users
+{
+    name:"Yasin",
+    email:"yasin@gmail.com",
+    password:"yasin@123",
+    isAdmin:false
+}
+// LOGIN 
+
+POST http://localhost:4040/api/users/login
+{
+  "email":"Yasin@gmail.com",
+   "password":"yasin123"
+ }
+
+ GET  http://localhost:4040/auth
+ 
+
+  "scripts": {
+    // "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+
+
+  server js
+
+  {
+  "name": "hotel",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon server/server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "concurrently": "^9.1.2",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.9.2",
+    "nodemon": "^3.1.9"
+  }
+}
