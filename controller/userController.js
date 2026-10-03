@@ -3,7 +3,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const nodemailer = require("nodemailer");
 
-const getUsers = async (req, res) => {
+const getUsers = async (req, res, next) => {
   try {
     const users = await User.find({});
     if (!users) {
@@ -58,7 +58,8 @@ const createUser = async (req, res, next) => {
       throw new Error("Problem in creating user");
     }
     //remove password and send to database
-    const { password: userPassword, ...otherDetails } = user._doc;
+    const otherDetails = { ...user._doc };
+    delete otherDetails.password;
     sendRegisterEmail(otherDetails);
     return res.status(201).json(otherDetails);
   } catch (error) {
@@ -67,7 +68,7 @@ const createUser = async (req, res, next) => {
 };
 
 //get single user
-const getUser = async (req, res,next) => {
+const getUser = async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
     if (!user) {
@@ -131,7 +132,8 @@ const loginUser = async (req, res,next) => {
     //generate token & set to cookies
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
     res.cookie("jwt",token)
-    const { password: userPassword, ...rest } = user._doc;
+    const rest = { ...user._doc };
+    delete rest.password;
 
     //removing password and adding jwt token to database
     res.status(200).json({ ...rest, token });

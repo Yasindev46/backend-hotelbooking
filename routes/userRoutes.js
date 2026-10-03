@@ -1,5 +1,5 @@
 const {Router}=require('express')
-const {getUsers,getUser,createUser,updateUser,deleteUser, logoutUser, loginUser} =require("../controller/userController")
+const {getUsers,getUser,createUser,updateUser,deleteUser, loginUser} =require("../controller/userController")
 
 const router=Router()
 

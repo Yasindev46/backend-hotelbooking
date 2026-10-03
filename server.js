@@ -1,4 +1,4 @@
-const dotenv=require("dotenv").config()
+require("dotenv").config()
 const cors=require("cors")
 const express=require("express")
 const app=express()
@@ -6,7 +6,6 @@ const connectDB=require("./config/db")
 const roomRoutes=require("./routes/roomRoutes")
 const bookingsRoutes=require("./routes/bookingRoutes")
 const userRoutes=require("./routes/userRoutes")
-const { errorHandler } = require("./middleware/errorHandlers")
 const cookieParser=require("cookie-parser")
 const { auth } = require("./middleware/authMiddleware")
 

@@ -1,5 +1,4 @@
 const {Router}=require("express")
-const {auth}=require("../middleware/authMiddleware")
 
 const {getRooms, createRoom, getRoom, updateRoom, deleteRoom}=require("../controller/roomController")
 
