@@ -21,6 +21,9 @@ app.use(cors())
 // app.use(express.urlencoded({ extended: true}))
 
 // setup routes
+// app.use("/",(req,res)=>{
+//     res.send("Welcome to Hotel Booking API")
+// })
 app.use("/auth",auth)
 app.use("/api/rooms",roomRoutes)
 app.use("/api/bookings",bookingsRoutes)
